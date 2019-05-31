@@ -2,29 +2,29 @@ const expect = require('chai').expect;
 
 describe('Shopping cart', () => {
   it('should add a product to cart and remove it', () => {
-    browser.url('https://react-shopping-cart-67954.firebaseapp.com/');
-    browser.waitForText('.shelf-item');
+    browser.url('');
+    $('.shelf-item').waitForDisplayed(15000);
 
     /* Open float cart */
-    browser.click('.bag--float-cart-closed');
+    $('.bag--float-cart-closed').click();
 
     /* Bag should start with 0 products */
-    browser.waitForText('.bag__quantity');
-    let bagProductsQtd = browser.getText('.bag__quantity');
+    $('.bag__quantity').waitForDisplayed(15000);
+    let bagProductsQtd = $('.bag__quantity').getText();
     expect(bagProductsQtd).to.equal('0');
 
     /* Add a product to cart */
-    browser.click('.shelf-item');
+    $('.shelf-item').click();
     browser.pause(100);
 
     /* And it should have 1 product in it now */
-    bagProductsQtd = browser.getText('.bag__quantity');
+    bagProductsQtd = $('.bag__quantity').getText();
     expect(bagProductsQtd).to.equal('1');
 
     /* Remove the product from cart and now it should show 0 products in bag */
-    browser.click('.shelf-item__del');
+    $('.shelf-item__del').click();
     browser.pause(100);
-    bagProductsQtd = browser.getText('.bag__quantity');
+    bagProductsQtd = $('.bag__quantity').getText();
     expect(bagProductsQtd).to.equal('0');
   });
 });
