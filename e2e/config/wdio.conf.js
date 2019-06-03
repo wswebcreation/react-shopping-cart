@@ -34,6 +34,19 @@ exports.config = {
       extendedDebugging: true,
       ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
     }
+  }, {
+    browserName: 'chrome',
+    browserVersion: 'beta',
+    'goog:chromeOptions': {
+      'w3c': true
+    },
+    'sauce:options': {
+      build: process.env.BUILD_ID || 'Local run',
+      screenResolution: '1600x1200',
+      seleniumVersion: '3.141.59',
+      extendedDebugging: true,
+      ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
+    }
   } ],
 
   // ===================
