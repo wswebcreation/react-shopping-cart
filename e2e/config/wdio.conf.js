@@ -28,10 +28,11 @@ exports.config = {
       'w3c': true
     },
     'sauce:options': {
+      build: process.env.BUILD_ID || 'Local run',
       screenResolution: '1600x1200',
       seleniumVersion: '3.141.59',
       extendedDebugging: true,
-      tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'local_tunnel',
+      ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
     }
   } ],
 
@@ -41,7 +42,7 @@ exports.config = {
   //
   logLevel: 'silent',
   bail: 0,
-  baseUrl: 'http://localhost:3000/',
+  baseUrl: 'http://localhost:5000/',
   waitforTimeout: 10000,
   connectionRetryTimeout: 90000,
   connectionRetryCount: 3,
