@@ -22,32 +22,35 @@ exports.config = {
   // Capabilities
   // ============
   maxInstances: 100,
-  capabilities: [ {
-    browserName: 'chrome',
-    'goog:chromeOptions': {
-      'w3c': true
+  capabilities: [
+    {
+      browserName: 'chrome',
+      'goog:chromeOptions': {
+        'w3c': true
+      },
+      'sauce:options': {
+        build: process.env.BUILD_ID || 'Local run',
+        screenResolution: '1600x1200',
+        seleniumVersion: '3.141.59',
+        extendedDebugging: true,
+        ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
+      }
     },
-    'sauce:options': {
-      build: process.env.BUILD_ID || 'Local run',
-      screenResolution: '1600x1200',
-      seleniumVersion: '3.141.59',
-      extendedDebugging: true,
-      ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
-    }
-  }, {
-    browserName: 'chrome',
-    browserVersion: 'beta',
-    'goog:chromeOptions': {
-      'w3c': true
-    },
-    'sauce:options': {
-      build: process.env.BUILD_ID || 'Local run',
-      screenResolution: '1600x1200',
-      seleniumVersion: '3.141.59',
-      extendedDebugging: true,
-      ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
-    }
-  } ],
+    // {
+    //   browserName: 'chrome',
+    //   browserVersion: 'beta',
+    //   'goog:chromeOptions': {
+    //     'w3c': true
+    //   },
+    //   'sauce:options': {
+    //     build: process.env.BUILD_ID || 'Local run',
+    //     screenResolution: '1600x1200',
+    //     seleniumVersion: '3.141.59',
+    //     extendedDebugging: true,
+    //     ...(process.env.TUNNEL_IDENTIFIER ? { tunnelIdentifier: process.env.TUNNEL_IDENTIFIER } : {})
+    //   }
+    // }
+  ],
 
   // ===================
   // Test Configurations
@@ -72,8 +75,8 @@ exports.config = {
   before: function(capabilities, specs) {
     require('@babel/register');
   },
-  beforeTest: function (test) {
-    const jobName = test.fullName.split(test.title)[0].trim();
-    console.log(`SauceOnDemandSessionID=${browser.sessionId} job-name=${jobName}`);
-  },
+  beforeTest: function(test) {
+    const jobName = test.fullName.split(test.title)[ 0 ].trim();
+    console.log(`SauceOnDemandSessionID=${ browser.sessionId } job-name=${ jobName }`);
+  }
 };

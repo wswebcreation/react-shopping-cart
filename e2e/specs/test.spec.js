@@ -28,11 +28,11 @@ describe('Shopping cart', () => {
     expect(bagProductsQtd).to.equal('0');
   });
 
-  it('should do nothing', ()=>{
-    // Foo
-  })
-
-  it('should again do nothing', ()=>{
-    // Foo
-  })
+  // it('should do nothing', ()=>{
+  //   // Foo
+  // })
+  //
+  // it('should again do nothing', ()=>{
+  //   // Foo
+  // })
 });

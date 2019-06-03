@@ -22,7 +22,7 @@ pipeline {
               sauce('SAUCE_ACCESS_KEY_EU') {
                 sauceconnect(options: '', sauceConnectPath: '', useGeneratedTunnelIdentifier: true, useLatestSauceConnect: true) {
                   sh "npm run test.e2e"
-                  saucePublisher()
+                  step([$class: 'SauceOnDemandTestPublisher'])
                 }
               }
             }
