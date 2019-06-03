@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build application') {
             steps {
-            	sh "npm start"
+            	sh "npm start &"
             }
         }
         stage('Run Functional Tests') {
