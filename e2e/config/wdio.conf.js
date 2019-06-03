@@ -31,7 +31,7 @@ exports.config = {
       screenResolution: '1600x1200',
       seleniumVersion: '3.141.59',
       extendedDebugging: true,
-      tunnelIdentifier: 'local_tunnel'
+      tunnelIdentifier: process.env.TUNNEL_IDENTIFIER || 'local_tunnel',
     }
   } ],
 

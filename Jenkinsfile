@@ -20,7 +20,7 @@ pipeline {
         stage('Run Functional Tests') {
             steps {
               sauce('SAUCE_ACCESS_KEY_EU') {
-                sauceconnect(options: 'local_tunnel', sauceConnectPath: '', useLatestSauceConnect: true) {
+                sauceconnect(options: '', sauceConnectPath: '', useGeneratedTunnelIdentifier: true, useLatestSauceConnect: true) {
                   sh "npm run test.e2e"
                 }
               }
