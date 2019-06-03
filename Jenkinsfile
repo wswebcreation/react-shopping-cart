@@ -23,6 +23,7 @@ pipeline {
                 sauceconnect(options: '', sauceConnectPath: '', useGeneratedTunnelIdentifier: true, useLatestSauceConnect: true) {
                   sh "npm run test.e2e"
                 }
+                saucePublisher()
               }
             }
         }
