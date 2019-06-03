@@ -58,5 +58,9 @@ exports.config = {
   // =====
   before: function(capabilities, specs) {
     require('@babel/register');
-  }
+  },
+  beforeTest: function (test) {
+    const jobName = test.fullName.split(test.title)[0].trim();
+    console.log(`SauceOnDemandSessionID=${browser.sessionId} job-name=${jobName}`);
+  },
 };
