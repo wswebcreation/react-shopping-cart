@@ -9,7 +9,9 @@ pipeline {
         }
         stage('Run Unit Tests with coverage') {
             steps {
+              wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
                 sh "npm run test:coverage"
+                }
             }
         }
         stage('Build application') {
