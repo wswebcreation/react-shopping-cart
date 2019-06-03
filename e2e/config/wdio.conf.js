@@ -8,8 +8,8 @@ exports.config = {
   // Service Providers
   // =================
   user: process.env.SAUCE_USERNAME,
-  key: process.env.SAUCE_ACCESS_KEY,
-  sauceConnect: true,
+  key: process.env.SAUCE_ACCESS_KEY_EU,
+  region: 'eu',
 
   // ==================
   // Specify Test Files
@@ -23,7 +23,16 @@ exports.config = {
   // ============
   maxInstances: 100,
   capabilities: [ {
-    browserName: 'chrome'
+    browserName: 'chrome',
+    'goog:chromeOptions': {
+      'w3c': true
+    },
+    'sauce:options': {
+      screenResolution: '1600x1200',
+      seleniumVersion: '3.141.59',
+      extendedDebugging: true,
+      tunnelIdentifier: 'local_tunnel'
+    }
   } ],
 
   // ===================
