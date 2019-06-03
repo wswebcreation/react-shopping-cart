@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Functional Tests') {
             steps {
-              sh "npm run wdio"
+              sh "npm run test.e2e"
             }
         }
     }
