@@ -27,4 +27,12 @@ describe('Shopping cart', () => {
     bagProductsQtd = $('.bag__quantity').getText();
     expect(bagProductsQtd).to.equal('0');
   });
+
+  it('should do nothing', ()=>{
+    // Foo
+  })
+
+  it('should again do nothing', ()=>{
+    // Foo
+  })
 });
